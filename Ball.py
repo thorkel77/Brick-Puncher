@@ -34,12 +34,10 @@ class Ball(pygame.sprite.Sprite):
     def leaves_screen(self):
         if self.rect.x < 0 or self.rect.x > 790:
             self.flip_direction_x()
-            effect = pygame.mixer.Sound('Son/wall_hit.wav')
-            effect.play()
+            
         if self.rect.y < 60:
             self.flip_direction_y()
-            effect = pygame.mixer.Sound('Son/wall_hit.wav')
-            effect.play() 
+           
 
         #return self.rect.y > 600
 

@@ -23,7 +23,7 @@ pygame.init()
 dbServerName    = "127.0.0.1"
 dbUser          = "root"
 dbPassword      = ""
-dbName          = "brickbreaker"
+dbName          = "brickpuncher"
 charSet         = "utf8mb4"
 db1 = pymysql.connect(host=dbServerName,user=dbUser,passwd=dbPassword, charset=charSet)
 
@@ -32,7 +32,7 @@ db1 = pymysql.connect(host=dbServerName,user=dbUser,passwd=dbPassword, charset=c
 cursorObject            = db1.cursor()                                     
 
     # SQL string to create a MySQL table
-sqlCreateDB   = "CREATE DATABASE IF NOT EXISTS brickbreaker"
+sqlCreateDB   = "CREATE DATABASE IF NOT EXISTS brickpuncher"
 
     # Execute the sqlQuery
     
@@ -56,7 +56,7 @@ cursorObject.execute(sqlCreateTablePartie)
 #pymsql vars
 currentDate= datetime.now().strftime('%Y-%m-%d')
 
-Music = 'Son/Home.ogg'
+
 #Colors
 WHITE = (255,255,255)
 DARKBLUE = (36,90,190)
@@ -73,12 +73,12 @@ BONUS_FALLING_SPEED = 5
 size = (800, 600)
 screen = pygame.display.set_mode(size)
 
-pygame.display.set_caption("Brick Breaker")
+pygame.display.set_caption("Brick Puncher")
 
-background1 = pygame.image.load("Images/main1.png").convert()
-background2 = pygame.image.load("Images/main2.png").convert()
-background3 = pygame.image.load("Images/main3.png").convert()
-background4 = pygame.image.load("Images/main4.png").convert()
+background1 = pygame.image.load("Images/téléchargé.PNG").convert()
+background2 = pygame.image.load("Images/téléchargé.PNG").convert()
+background3 = pygame.image.load("Images/téléchargé.PNG").convert()
+background4 = pygame.image.load("Images/téléchargé.PNG").convert()
 
 
 #Adapt background size
@@ -100,15 +100,14 @@ def main():
     
 
     pygame.mixer.pre_init(frequency=44100, size=-16, channels=2, buffer=4096)
-    pygame.mixer.music.load(Music)
-    pygame.mixer.music.play(-1) #-1 means loops for ever, 0 means play just once)
+   
 
     all_sprites_list = pygame.sprite.Group()
 
 
     #Logo creation
-    image = Image("logo.png",700,400)
-    image.rect.x = 50
+    image = Image("logo.png",600,400)
+    image.rect.x = 140
     image.rect.y = 0
     all_sprites_list.add(image)
 
@@ -218,7 +217,7 @@ def instruction():
 
 
 
-     background = pygame.image.load("Images/background.png").convert()
+     background = pygame.image.load("Images/téléchargé.PNG").convert()
      background = pygame.transform.scale(background, size)
      screen.blit(background, (0,0))
      all_item_list = pygame.sprite.Group()
@@ -290,18 +289,6 @@ def instruction():
      keyleft.rect.y = 230
 
     #Instruction items
-     itemagrandi = Image("Images/PNG/itemagrandi.png",100,25)
-     itemagrandi.rect.x = 50
-     itemagrandi.rect.y = 290
-     text = text_instruction.render("Si votre plateforme touche cet item, la taille de la plateforme augmente.", 1, (255, 255, 255))
-     screen.blit(text, (200,300))
-
-     itemretreci = Image("Images/PNG/itemretreci.png",100,25)
-     itemretreci.rect.x = 50
-     itemretreci.rect.y = 340
-     text = text_instruction.render("Si votre plateforme touche cet item, la taille de la plateforme retreci.", 1, (255, 255, 255))
-     screen.blit(text, (200,350))
-
      itemfast = Image("Images/PNG/itemfast.png",100,25)
      itemfast.rect.x = 50
      itemfast.rect.y = 390
@@ -326,7 +313,7 @@ def instruction():
      text = text_instruction.render("Si votre plateforme touche cet item, une balle supplementaire est ajoutee a l'ecran.", 1, (255, 255, 255))
      screen.blit(text, (200,550))
 
-     all_item_list.add(keyright,keyleft,itemaddball,itemagrandi,itemfast,itemslow,itemlaser,itemretreci,live,brique,capsule,demi)
+     all_item_list.add(keyright,keyleft,itemaddball,itemfast,itemslow,itemlaser,live,brique,capsule,demi)
      continuer = True
 
      #TITLE
@@ -362,7 +349,7 @@ def instruction():
 def stat():
 
      #Background
-     background = pygame.image.load("Images/background.png").convert()
+     background = pygame.image.load("Images/téléchargé.PNG").convert()
      background = pygame.transform.scale(background, size)
      screen.blit(background, (0,0))
 
@@ -443,7 +430,7 @@ def stat():
 
 def about(bonusVies,ball,lives):
      lives+=3
-     background = pygame.image.load("Images/background.png").convert()
+     background = pygame.image.load("Images/téléchargé.PNG").convert()
      background = pygame.transform.scale(background, size)
      screen.blit(background, (0,0))
 
@@ -535,7 +522,7 @@ def about(bonusVies,ball,lives):
 
 def custom():
      background=0
-     backgroun = "Images/background.png"
+     backgroun = "Images/téléchargé.PNG"
      Loadbackground = pygame.image.load(backgroun).convert()
      Loadbackground = pygame.transform.scale(Loadbackground, size)
      screen.blit(Loadbackground, (0,0))
@@ -546,54 +533,12 @@ def custom():
      #input
      username = TextBox(300, 110, 200, 24, 24, 20, False)
      labelUsername = menu.render("Username:", 1, (255, 255, 255))
-     indication = pygame.font.Font(None, 24)
+     indication = pygame.font.Font(None, 30)
      labelObligatoire = indication.render("(Obligatoire)", 1, (255, 255, 255))
 
      textboxes = [username]
      
-     #Ball Choice
-     draw_text('Choix de la balle :', indication, (255, 255, 255), screen, 70, 180)
-     ball1 = Image("Images/PNG/58-Breakout-Tiles.png",50,50)
-     ball1.rect.x = 90
-     ball1.rect.y = 200
-     text = font.render("Metal Ball", 1, (255, 255, 255))
-     screen.blit(text, (70,265))
-     ball2 = Image("Images/ball2.png",50,50)
-     ball2.rect.x = 240
-     ball2.rect.y = 200
-     text = font.render("Foot Ball", 1, (255, 255, 255))
-     screen.blit(text, (220,265))
-     ball3 = Image("Images/ball5.png",50,50)
-     ball3.rect.x = 390
-     ball3.rect.y = 200
-     text = font.render("Kirby Ball", 1, (255, 255, 255))
-     screen.blit(text, (370,265))
-
-     #Background Choice
-     draw_text("Choix du fond d'ecran :", indication, (255, 255, 255), screen, 70, 350)
-
-     background1 = Image("Images/background.png",200,150)
-     background1.rect.x = 50
-     background1.rect.y = 370
-     text = font.render("Montagne", 1, (255, 255, 255))
-     screen.blit(text, (100,550))
-
-     background2 = Image("Images/Beach.gif",200,150)
-     background2.rect.x = 300
-     background2.rect.y = 370
-     text = font.render("Plage", 1, (255, 255, 255))
-     screen.blit(text, (350,550))
-
-     background3 = Image("Images/Temple.png",200,150)
-     background3.rect.x = 550
-     background3.rect.y = 370
-     text = font.render("Temple", 1, (255, 255, 255))
-     screen.blit(text, (600,550))
-
-
-
-     all_custom_list.add(ball1,ball2,ball3,background3,background1,background2)
-
+    
      #TITLE
      draw_text('Personnalisation', menu, (255, 255, 255), screen, 250, 30)
 
@@ -627,18 +572,7 @@ def custom():
             if event.type == MOUSEBUTTONDOWN:
             # Set the x, y postions of the mouse click
                 x, y = event.pos
-                if ball1.rect.collidepoint(x,y):
-                    imageball="Images/PNG/58-Breakout-Tiles.png"
-                if ball2.rect.collidepoint(x,y):
-                    imageball="Images/ball2.png"
-                if ball3.rect.collidepoint(x,y):
-                    imageball="Images/ball5.png"
-                if background1.rect.collidepoint(x,y):
-                    background="Images/background.png"
-                if background2.rect.collidepoint(x,y):
-                    background="Images/Beach.gif"
-                if background3.rect.collidepoint(x,y):
-                    background="Images/Temple.png"
+               
                 if cancelrect.collidepoint(x,y):
                     continuer = False
                 if playrect.collidepoint(x,y) and (len(username.text)>0) :
@@ -649,9 +583,9 @@ def custom():
                     if cursorObject.rowcount>0:
                         result = cursorObject.fetchone() 
                         if background==0:
-                            background=result[2]
+                            background=result[0]
                         if imageball==0:
-                            imageball=result[3]
+                            imageball=result[0]
                         bestGame = result[1]
                         idPlayer = result[0]
                         bonusVies= result[4]
@@ -660,7 +594,7 @@ def custom():
                         cursorObject.execute(sql, val)
                     else:
                         if background==0:
-                            background="Images/background.png"
+                            background="Images/téléchargé.PNG"
                         if imageball==0:
                             imageball="Images/PNG/58-Breakout-Tiles.png"
                         bestGame=0
@@ -690,9 +624,6 @@ def custom():
 def game(imageball,background,idPlayer,bestGame,bonusVies):
 
     start_time =  time.time()
-    Music = 'Son/game.ogg'
-    pygame.mixer.music.load(Music)
-    pygame.mixer.music.play(-1)
     backgroundGame = pygame.image.load(background).convert()
     backgroundGame = pygame.transform.scale(backgroundGame, size)
     
@@ -820,11 +751,10 @@ def game(imageball,background,idPlayer,bestGame,bonusVies):
 
     def congratulation(imageball,background,score,nbcoup,lives,ball_speed,spendTime,idPlayer,bestGame):
         
-        Music = 'Son/Success.ogg'
-        pygame.mixer.music.load(Music)
-        pygame.mixer.music.play(0)
+        
+      
         continuer = True 
-        backgroundEnd = pygame.image.load("Images/ending.png").convert()
+        backgroundEnd = pygame.image.load("Images/téléchargé.PNG").convert()
         backgroundEnd = pygame.transform.scale(backgroundEnd, size)
         bonus=(lives-3)
         if bonus >=1:
@@ -875,10 +805,10 @@ def game(imageball,background,idPlayer,bestGame,bonusVies):
                         game(imageball,background,idPlayer,bestGame,bonus)
 
            
-            draw_text('FELICITATION !', menu, (255, 255, 255), screen, 200, 50)
-            draw_text(("Vous avez gagne en "+ str(nbcoup) +" coups avec un score de "+ str(score) +" points "), font, (255, 255, 255),screen, 200, 100)
+            draw_text('DOMMAGE !', menu, (255, 255, 255), screen, 200, 50)
+            draw_text(("Vous avez perdu en "+ str(nbcoup) +" coups avec un score de "+ str(score) +" points "), font, (255, 255, 255),screen, 200, 100)
             
-            draw_text('et en seulement '+str(spendTime)+' secondes ! ', font, (255, 255, 255), screen, 200, 130)
+            draw_text('et en  '+str(spendTime)+' secondes ! ', font, (255, 255, 255), screen, 200, 130)
             draw_text('Vies restantes = '+ str(lives), font, (255, 255, 255), screen, 200, 160)
 
 
@@ -985,11 +915,9 @@ def game(imageball,background,idPlayer,bestGame,bonusVies):
 
 
     def gameover(imageball,background,score,nbcoup,lives,spendTime,ball_speed,idPlayer,bestGame):
-        Music = 'Son/Gameover.ogg'
-        pygame.mixer.music.load(Music)
-        pygame.mixer.music.play(0)
+        
         continuer = True 
-        backgroundEnd = pygame.image.load("Images/gameover.png").convert()
+        backgroundEnd = pygame.image.load("Images/téléchargé.PNG").convert()
         backgroundEnd = pygame.transform.scale(backgroundEnd, size)
         bonus=(lives-3)
         if bonus >=1:
@@ -1066,12 +994,9 @@ def game(imageball,background,idPlayer,bestGame,bonusVies):
     score = 0
     lives = 3+bonusVies
     nbcoup = 0
-    paddle1 = pygame.image.load("Images/PNG/50-Breakout-Tiles.png").convert_alpha()
-    paddle2 = pygame.image.load("Images/PNG/51-Breakout-Tiles.png").convert_alpha()
-    paddle3 = pygame.image.load("Images/PNG/52-Breakout-Tiles.png").convert_alpha()
+    paddle1 = pygame.image.load("Images/paddle2.png").convert_alpha()
+    
     paddle1 = pygame.transform.scale(paddle1, (100,20))
-    paddle2 = pygame.transform.scale(paddle2, (100,20))
-    paddle3 = pygame.transform.scale(paddle3, (100,20))
     state = 0
     # -------- Main Program Loop -----------
     #while continuer:
@@ -1099,16 +1024,12 @@ def game(imageball,background,idPlayer,bestGame,bonusVies):
 
     liste_pouvoir = []
     ball_2_active = False
-    agrandi_active = False
-    retreci_active = False
     laser_active = False
     laser = False
     ral_active = False
     acc_active = False
 
     #Countdown pouvoir 
-    agrandissement = 500
-    retreci_count = 500
     extraball_count = 500
     laser_count = 500
     ral = 500
@@ -1173,12 +1094,8 @@ def game(imageball,background,idPlayer,bestGame,bonusVies):
                 pouvoir.kill()
 
             if pygame.sprite.collide_mask(pouvoir, paddle):
-                if pouvoir.rand_pouvoir == 1:
-                    pouvoir.agrandir(paddle)
-                    agrandi_active = True
-                    agrandissement = 500
-                    pouvoir.kill()
-                elif pouvoir.rand_pouvoir == 2:
+            
+                if pouvoir.rand_pouvoir == 2:
                     pouvoir.accelerer(ball)
                     acc=500
                     acc_active = True
@@ -1188,11 +1105,7 @@ def game(imageball,background,idPlayer,bestGame,bonusVies):
                     ral=500
                     ral_active=True
                     pouvoir.kill()
-                elif pouvoir.rand_pouvoir == 4:
-                    pouvoir.retrecissement(paddle)
-                    retreci_active = True
-                    retreci_count = 500
-                    pouvoir.kill()
+                
                 elif pouvoir.rand_pouvoir == 5:
                     if ball_2_active is False:
                         ball_2_active = True
@@ -1224,7 +1137,7 @@ def game(imageball,background,idPlayer,bestGame,bonusVies):
                 laser_left.kill()
 
             if laser_count == 0:
-                paddle.image = pygame.image.load("Images/50-Breakout-Tiles.png").convert_alpha()
+                paddle.image = pygame.image.load("Images/paddle2.png").convert_alpha()
                 paddle.image = pygame.transform.scale(paddle.image, (100,30)) 
                 laser_active = False
                 laser_right.kil()
@@ -1324,18 +1237,8 @@ def game(imageball,background,idPlayer,bestGame,bonusVies):
         if 'extra_ball' in globals():
             if extra_ball.lose():
                 extra_ball.kill()
-        if agrandi_active: 
-            agrandissement -=1 
-            if agrandissement == 0:
-                paddle.image = pygame.image.load("Images/50-Breakout-Tiles.png").convert_alpha()
-                paddle.image = pygame.transform.scale(paddle.image, (100,30))     
-                agrandi_active = False
-        if retreci_active: 
-            retreci_count -=1 
-            if retreci_count == 0:
-                paddle.image = pygame.image.load("Images/50-Breakout-Tiles.png").convert_alpha()
-                paddle.image = pygame.transform.scale(paddle.image, (100,30))     
-                retreci_active = False
+       
+        
         if acc_active: 
             acc -=1 
             if acc == 0:
@@ -1390,8 +1293,8 @@ def game(imageball,background,idPlayer,bestGame,bonusVies):
         if pygame.sprite.collide_mask(ball, paddle):
             ball.flip_direction_y()
             nbcoup +=1
-            effect = pygame.mixer.Sound('Son/paddle_hit.wav')
-            effect.play()
+           
+            
 
 
 
@@ -1426,7 +1329,7 @@ def game(imageball,background,idPlayer,bestGame,bonusVies):
                 pouvoir.kill()
             liste_pouvoir = []
             ball_2_active = False
-            paddle.image = pygame.image.load("Images/50-Breakout-Tiles.png").convert_alpha()
+            paddle.image = pygame.image.load("Images/paddle2.png").convert_alpha()
             paddle.image = pygame.transform.scale(paddle.image, (100,30))  
             #ball.move()
 
@@ -1475,8 +1378,8 @@ def game(imageball,background,idPlayer,bestGame,bonusVies):
                     #     element.bonus.rect.y = element.bonus.rect.y + BONUS_FALLING_SPEED
                 if isinstance(element, Square):
                     score += 200
-                effect = pygame.mixer.Sound('Son/block_break.wav')
-                effect.play()
+                
+
                 vie_supplementaire += 1
 
                 if vie_supplementaire % 5 == 0:
@@ -1506,11 +1409,11 @@ def game(imageball,background,idPlayer,bestGame,bonusVies):
         pygame.draw.line(screen, WHITE, [0, 38], [800, 38], 2)
     
         #Display the score and the number of lives at the top of the screen
-        text = font.render("Score: " + str(score) +" | Lives:" + str(lives), 1, WHITE)
+        text = font.render("Score: " + str(score) +" | vies:" + str(lives), 1, WHITE)
         screen.blit(text, (20,10))
         text = font.render("Stage: 1", 1, WHITE)
         screen.blit(text, (350,10))
-        text = font.render("Playtime : "+str(int(time.time()-start_time)), 1, WHITE)
+        text = font.render("temps : "+str(int(time.time()-start_time)), 1, WHITE)
         screen.blit(text, (600,10))
         #reset
         if state == 0:

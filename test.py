@@ -40,7 +40,7 @@ class BrickBreak:
 		pygame.init()
 		
 		self.screen = pygame.display.set_mode(SCREEN_SIZE)
-		pygame.display.set_caption("BrickBreak by @timMorr")
+		pygame.display.set_caption("Brick Puncher by Denys & Ryan")
 		
 		self.clock = pygame.time.Clock()
 		
@@ -299,7 +299,7 @@ class BrickBreak:
 				
 	def show_stats(self):
 		if self.font:
-			font_surface = self.font.render("LEVEL: " + str(self.level + 1) + " SCORE: " + str(self.score) + " LIVES: " + str(self.lives), False, WHITE)
+			font_surface = self.font.render("Niveau: " + str(self.level + 1) + " SCORE: " + str(self.score) + " Vies: " + str(self.lives), False, WHITE)
 			self.screen.blit(font_surface, (205, 5))
 		
 		
@@ -328,13 +328,13 @@ class BrickBreak:
 			elif self.state == STATE_BALL_IN_PADDLE:
 				self.ball.left = self.paddle.left + self.paddle.width / 2
 				self.ball.top = self.paddle.top - self.ball.height
-				self.show_message("PRESS SPACE TO START")
+				self.show_message("Appuyer sur espace pour commencer!")
 			elif self.state == STATE_GAME_OVER:
-				self.show_message("GAME OVER. PRESS ENTER TO RESTART")
+				self.show_message("GAME OVER. Appuyer sur entrer pour rejouer!")
 			elif self.state == STATE_WON:
-				self.show_message("YOU WON! PRESS ENTER TO PLAY THE NEXT LEVEL")
+				self.show_message("Vous avez gagné!  appuyer sur entrer pour aller au niveau suivant")
 			elif self.state == STATE_WON and self.level == 9:
-				self.show_message("CONGRATULATIONS, YOU'VE COMPLETED THE GAME!!")
+				self.show_message("Félicitations, Vous avez complété  le jeu  !!")
 			
 			
 		

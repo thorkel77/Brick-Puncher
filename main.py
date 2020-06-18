@@ -2,7 +2,7 @@ import pygame
 
 # Import the pygame library and initialise the game engine
 def game(imageball):
-    background = pygame.image.load("Images/background.png").convert()
+    background = pygame.image.load("Images/téléchargé.PNG").convert()
     background = pygame.transform.scale(background, size)
 
 
@@ -61,11 +61,11 @@ def game(imageball):
         pygame.draw.line(screen, WHITE, [0, 38], [800, 38], 2)
     
         #Display the score and the number of lives at the top of the screen
-        text = font.render("Score: " + str(score) +" | Lives:" + str(lives), 1, WHITE)
+        text = font.render("Score: " + str(score) +" | vies:" + str(lives), 1, WHITE)
         screen.blit(text, (20,10))
         text = font.render("Stage: 1", 1, WHITE)
         screen.blit(text, (350,10))
-        text = font.render("Playtime : 00:01", 1, WHITE)
+        text = font.render("temps : 00:01", 1, WHITE)
         screen.blit(text, (600,10))
     
         all_sprites_list.draw(screen)
