@@ -6,9 +6,11 @@ un jeu où il faut détruire des briques !!!
 
 2) Il faut aller dans le dossier du jeu, une fois le téléchargement du jeu finis.
 
-3) Il faut dans le terminal, écrire python game.py
+3) Il faut créer la base de données et l'appeler brickpuncher.
 
-4) le jeu se lance et c'est à vous de jouer!!
+4) Il faut dans le terminal, écrire python game.py
+
+5) le jeu se lance et c'est à vous de jouer!!
 
 
 
