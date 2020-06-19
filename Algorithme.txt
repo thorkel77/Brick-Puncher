@@ -1,0 +1,25 @@
+MENU
+entré
+x et y sont des entiers et A est un réel
+x=1 et y = [1;2]
+A est le resultat de x et y
+si y est impair
+alors on ajoute x à y (x + y)
+sinon on enleve (x - y)
+Fin
+Affichez A 
+
+score
+entré
+x, y, s et n sont des entiers
+x = 1, s = 0 
+tant que y different de 0
+alors n - x
+si n = 0 alors on ajoute x à s (x + s)
+Fin
+Affichez s
+
+s = score 
+x = balle
+y = nb de brique
+n = vie d'une brique
