@@ -27,6 +27,8 @@ Au départ nous étions partis sur du C++, pour essayer de développer sur un no
 Le principal problème fut la fonctionnalité du code récupérer dû à des outils surement obsolètes et le fait que nous n’arrivions pas à régler les problèmes.
 
 Nous nous sommes mis sur du Python ayant plus d’informations et surtout une librairie qui nous aide beaucoup qui se nomme pygame.
+Nous avons utilisés python 3.8.
+Nous avons utilisés mysql pour la base de données.
 
 Nous avons pu avancer grâce à cette librairie qui nous aide beaucoup et surtout à de la documentation et du code open source. 
 
